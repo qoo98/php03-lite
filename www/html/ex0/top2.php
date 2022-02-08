@@ -3,5 +3,6 @@
      <input type="email" name="email" class="textbox un" placeholder="メールアドレス"><br>
      <input type="password" name="password" class="textbox pass" placeholder="パスワード"><br>
      <button type="submit" class="log_button">新規登録する</button>
-     <p style="text-align:center;margin-top: 1.5em;">※パスワードは半角英数字をそれぞれ１文字以上含んだ、6文字以上で設定してください。</p>
 </form>
+
+<a href="top.php">Log in</a>

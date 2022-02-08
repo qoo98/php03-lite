@@ -13,6 +13,9 @@ try {
   $pdo = new PDO(DSN, DB_USER, DB_PASS);
   $stmt = $pdo->prepare('select * from userDeta where email = ?');
   $stmt->execute([$_POST['email']]);
+  $all = $pdo->prepare('select * from userDeta order by id desc');
+  $all->execute();
+  $loopcount = $all->rowCount();
   $row = $stmt->fetch(PDO::FETCH_ASSOC);
 } catch (\Exception $e) {
   echo $e->getMessage() . PHP_EOL;
@@ -29,7 +32,6 @@ if (password_verify($_POST['password'], $row['password'])) {
 
     // WELCOMEページを作る
     echo $_SESSION['EMAIL'];
-    $count = 0;
     ?>
 
     <!DOCTYPE html>
@@ -42,12 +44,13 @@ if (password_verify($_POST['password'], $row['password'])) {
     <a href="logout.php">logout</a>
     
   
-    <h2>Users(<?php echo ($count + 1);?>)</h2>
+    <h2>Users(<?php echo $loopcount;?>)</h2>
     <ui>
-    <li><?php foreach ((array)$_SESSION['EMAIL'] as $email) {
-        echo $email;
-        $count += 1;
-    }?>
+    <?php foreach($all as $loop) {?>
+        <li>
+          <?php echo "${loop['email']}"?>
+        </li>
+      <?php } ?>
     </body>
     </html>
     

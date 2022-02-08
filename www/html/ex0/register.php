@@ -37,7 +37,6 @@ if (!isset($row['email'])) {
 
 <body id="log_body">
   <main class="main_log">
-    <p>登録完了</p>
   <h1 style="text-align:center;margin-top: 0em;margin-bottom: 1em;" class="h1_log">ログインしてください</h1>
   <form action="login.php" method="post" class="form_log">
     <!--<label for="email" class="label">メールアドレス</label><br>-->
